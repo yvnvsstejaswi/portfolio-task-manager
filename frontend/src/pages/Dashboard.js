@@ -46,7 +46,7 @@ function Dashboard() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/auth/users"
+          "https://your-backend-name.onrender.com/api/auth/users"
         );
 
       const filteredUsers =
@@ -91,7 +91,7 @@ function Dashboard() {
 
       const response =
         await axios.get(
-          `http://localhost:5000/api/tasks/${userId}`
+          `https://your-backend-name.onrender.com/api/tasks/${userId}`
         );
 
       setTasks(response.data);
@@ -126,7 +126,7 @@ function Dashboard() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/tasks/add",
+        "https://your-backend-name.onrender.com/api/tasks/add",
         {
           task,
           userId:selectedUser.id
@@ -163,7 +163,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/tasks/complete/${id}`
+        `https://your-backend-name.onrender.com/api/tasks/complete/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -184,7 +184,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/tasks/undo/${id}`
+        `https://your-backend-name.onrender.com/api/tasks/undo/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -205,7 +205,7 @@ function Dashboard() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/tasks/delete/${id}`
+        `https://your-backend-name.onrender.com/api/tasks/delete/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -235,7 +235,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/tasks/edit/${id}`,
+        `https://your-backend-name.onrender.com/api/tasks/edit/${id}`,
         {
           task:editText
         }

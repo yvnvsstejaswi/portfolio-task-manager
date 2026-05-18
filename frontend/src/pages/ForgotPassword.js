@@ -99,7 +99,7 @@ function ForgotPassword() {
 
       const response = await axios.put(
 
-        "http://localhost:5000/api/auth/forgot-password",
+        "https://your-backend-name.onrender.com/api/auth/forgot-password",
 
         {
           email: formData.email,

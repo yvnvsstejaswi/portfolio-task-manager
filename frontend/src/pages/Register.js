@@ -143,7 +143,7 @@ function Register() {
         const response =
         await axios.post(
 
-          "http://localhost:5000/api/auth/register",
+          "https://your-backend-name.onrender.com/api/auth/register",
 
           {
 
