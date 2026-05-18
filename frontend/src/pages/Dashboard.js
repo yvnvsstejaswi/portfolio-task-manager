@@ -46,7 +46,7 @@ function Dashboard() {
 
       const response =
         await axios.get(
-          "https://your-backend-name.onrender.com/api/auth/users"
+          "https://taskmanager-backend-f36i.onrender.com/api/auth/users"
         );
 
       const filteredUsers =
@@ -91,7 +91,7 @@ function Dashboard() {
 
       const response =
         await axios.get(
-          `https://your-backend-name.onrender.com/api/tasks/${userId}`
+          `https://taskmanager-backend-f36i.onrender.com/api/tasks/${userId}`
         );
 
       setTasks(response.data);
@@ -126,7 +126,7 @@ function Dashboard() {
     try {
 
       await axios.post(
-        "https://your-backend-name.onrender.com/api/tasks/add",
+        "https://taskmanager-backend-f36i.onrender.com/api/tasks/add",
         {
           task,
           userId:selectedUser.id
@@ -163,7 +163,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `https://your-backend-name.onrender.com/api/tasks/complete/${id}`
+        `https://taskmanager-backend-f36i.onrender.com/tasks/complete/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -184,7 +184,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `https://your-backend-name.onrender.com/api/tasks/undo/${id}`
+        `https://taskmanager-backend-f36i.onrender.com/api/tasks/undo/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -205,7 +205,7 @@ function Dashboard() {
     try {
 
       await axios.delete(
-        `https://your-backend-name.onrender.com/api/tasks/delete/${id}`
+        `https://taskmanager-backend-f36i.onrender.com/api/tasks/delete/${id}`
       );
 
       fetchTasks(selectedUser.id);
@@ -235,7 +235,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `https://your-backend-name.onrender.com/api/tasks/edit/${id}`,
+        `https://taskmanager-backend-f36i.onrender.com/api/tasks/edit/${id}`,
         {
           task:editText
         }

@@ -31,7 +31,7 @@ function StudentDashboard() {
       const response =
         await axios.get(
 
-          `https://your-backend-name.onrender.com/api/tasks/${user.id}`
+          `https://taskmanager-backend-f36i.onrender.com/api/tasks/${user.id}`
         );
 
       setTasks(response.data);
@@ -67,7 +67,7 @@ function StudentDashboard() {
 
         await axios.put(
 
-          `https://your-backend-name.onrender.com/api/tasks/undo/${id}`
+          `https://taskmanager-backend-f36i.onrender.com/api/tasks/undo/${id}`
         );
 
       }
@@ -76,7 +76,7 @@ function StudentDashboard() {
 
         await axios.put(
 
-          `https://your-backend-name.onrender.com/api/tasks/complete/${id}`
+          `https://taskmanager-backend-f36i.onrender.com/api/tasks/complete/${id}`
         );
       }
 

@@ -143,7 +143,7 @@ function Register() {
         const response =
         await axios.post(
 
-          "https://your-backend-name.onrender.com/api/auth/register",
+          "https://taskmanager-backend-f36i.onrender.com/api/auth/register",
 
           {
 
