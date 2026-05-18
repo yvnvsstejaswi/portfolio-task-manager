@@ -1,0 +1,817 @@
+/* ================= GLOBAL ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f5f5f5;
+}
+
+/* ================= COMMON ANIMATIONS ================= */
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeLeft{
+  from{
+    opacity:0;
+    transform:translateX(-40px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes fadeDown{
+  from{
+    opacity:0;
+    transform:translateY(-40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes floatIcon{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0);}
+}
+
+/* ================= COMMON COLORS ================= */
+
+:root{
+
+  --orange:#f97316;
+  --pink:#ec4899;
+  --purple:#8b5cf6;
+  --dark:#111827;
+  --blue:#2563eb;
+  --gray:#374151;
+
+  --heading-gradient:linear-gradient(
+    to right,
+    #fef3c7,
+    #fde2e4
+  );
+
+  --card-gradient:linear-gradient(
+    to bottom right,
+    #ffffff,
+    #fff7ed
+  );
+
+  --primary-gradient:linear-gradient(
+    to right,
+    #f97316,
+    #ec4899
+  );
+
+  --cgpa-gradient:linear-gradient(
+    to right,
+    #ec4899,
+    #8b5cf6
+  );
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.portfolio-container{
+  min-height:100vh;
+  background:linear-gradient(
+    135deg,
+    #fff7ed,
+    #fde68a,
+    #fbcfe8
+  );
+  padding-bottom:50px;
+}
+
+/* ================= HEADER ================= */
+
+.portfolio-header{
+  background:linear-gradient(
+    to right,
+    #7c2d12,
+    #ea580c,
+    #db2777
+  );
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:25px 45px;
+
+  color:white;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.moon-icon{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+
+  background:white;
+  color:#ea580c;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:28px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.25);
+
+  animation:floatIcon 3s infinite;
+}
+
+/* ================= HEADER CENTER ================= */
+
+.header-center{
+  flex:1;
+  text-align:center;
+}
+
+.header-center h1{
+  font-size:58px;
+  margin-bottom:12px;
+  animation:fadeDown 1s ease;
+}
+
+.header-center p{
+  font-size:24px;
+  color:#ffedd5;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-section img{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  object-fit:cover;
+
+  border:5px solid #fef3c7;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.35);
+
+  transition:0.4s;
+}
+
+.profile-section img:hover{
+  transform:scale(1.08);
+}
+
+/* ================= NAVBAR ================= */
+
+.portfolio-navbar{
+  background:#4a044e;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+
+  gap:35px;
+
+  padding:18px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.portfolio-navbar a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.portfolio-navbar a:hover{
+  color:#f9a8d4;
+  transform:translateY(-3px);
+}
+
+/* ================= COMMON CARD ================= */
+
+.portfolio-card,
+.skills-box,
+.contact-box,
+.internship-box{
+  animation:fadeUp 1s ease;
+}
+
+/* ================= PORTFOLIO CARD ================= */
+
+.portfolio-card{
+  width:95%;
+  margin:40px auto;
+
+  background:rgba(255,255,255,0.92);
+
+  border-radius:24px;
+
+  padding:50px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.18);
+}
+
+.portfolio-card h2,
+.skills-heading,
+.internship-heading{
+  text-align:center;
+
+  font-size:48px;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  margin-bottom:35px;
+
+  font-weight:bold;
+
+  background:var(--heading-gradient);
+
+  border:2px solid var(--orange);
+
+  color:#7c2d12;
+}
+
+.portfolio-card p{
+  text-align:center;
+
+  font-size:22px;
+
+  line-height:1.9;
+
+  margin-bottom:28px;
+
+  transition:0.3s;
+}
+
+.portfolio-card p:hover{
+  transform:scale(1.01);
+}
+
+/* ================= TEXT COLORS ================= */
+
+.intro-text{
+  color:#c2410c;
+  font-weight:bold;
+}
+
+.portfolio-card p:nth-of-type(2){
+  color:#be185d;
+}
+
+.portfolio-card p:nth-of-type(3){
+  color:#7c3aed;
+}
+
+.highlight-text{
+  color:#dc2626 !important;
+  font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+.portfolio-footer{
+  margin-top:50px;
+
+  background:#7c2d12;
+
+  color:white;
+
+  text-align:center;
+
+  padding:22px;
+
+  box-shadow:0 -4px 15px rgba(0,0,0,0.2);
+}
+
+.portfolio-footer p{
+  font-size:17px;
+  letter-spacing:1px;
+}
+
+/* ================= EDUCATION ================= */
+
+.edu-card{
+  background:linear-gradient(
+    to right,
+    #fff7ed,
+    #fef3c7
+  );
+
+  border-left:8px solid var(--orange);
+
+  border-radius:20px;
+
+  padding:28px;
+
+  margin-top:28px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:20px;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+
+  transition:0.4s;
+}
+
+.edu-card:hover,
+.skills-box:hover,
+.internship-box:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 15px 28px rgba(0,0,0,0.12);
+}
+
+.edu-left{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.edu-icon,
+.internship-icon-box{
+  width:75px;
+  height:75px;
+
+  border-radius:18px;
+
+  background:var(--primary-gradient);
+
+  color:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:34px;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.edu-details h3{
+  font-size:32px;
+  color:var(--dark);
+  margin-bottom:10px;
+}
+
+.college-name{
+  font-size:20px;
+
+  color:var(--blue);
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-bottom:10px;
+}
+
+.location,
+.internship-location{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  color:#dc2626;
+
+  font-size:18px;
+
+  font-weight:bold;
+}
+
+.cgpa-box,
+.internship-duration{
+  background:var(--cgpa-gradient);
+
+  color:white;
+
+  padding:18px 28px;
+
+  border-radius:16px;
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ================= SKILLS ================= */
+
+.skills-page{
+  width:95%;
+  margin:40px auto;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:35px;
+
+  animation:fadeIn 1s ease;
+}
+
+.skills-box{
+  background:var(--card-gradient);
+
+  padding:35px;
+
+  border-radius:30px;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+  transition:0.4s;
+}
+
+.skills-list{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.skill-item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  font-size:32px;
+  font-weight:600;
+
+  color:#1e293b;
+
+  transition:0.3s;
+
+  animation:fadeLeft 1s ease;
+}
+
+.skill-item:hover{
+  transform:translateX(12px);
+}
+
+.skill-icon,
+.soft-icon{
+  font-size:38px;
+  transition:0.4s;
+}
+
+.skill-item:hover .skill-icon,
+.skill-item:hover .soft-icon{
+  transform:scale(1.2) rotate(8deg);
+}
+
+/* ================= ICON COLORS ================= */
+
+.python{color:#facc15;}
+.java{color:#ef4444;}
+.js{color:#facc15;}
+.html{color:#f97316;}
+.css{color:#2563eb;}
+.react{color:#06b6d4;}
+.node{color:#16a34a;}
+.mysql{color:#0284c7;}
+.powerbi{color:#f59e0b;}
+.flask{color:#374151;}
+.ai{color:#8b5cf6;}
+.opencv{color:#dc2626;}
+.spring{color:#16a34a;}
+.api{color:#0ea5e9;}
+
+.soft-icon{
+  color:#7c3aed;
+}
+
+/* ================= INTERNSHIPS ================= */
+
+.internship-page{
+  width:95%;
+  margin:35px auto;
+  animation:fadeIn 1s ease;
+}
+
+.internship-box{
+  background:var(--card-gradient);
+
+  border-left:6px solid var(--orange);
+
+  border-radius:25px;
+
+  padding:30px;
+
+  margin-bottom:30px;
+
+  display:flex;
+
+  gap:25px;
+
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+
+  transition:0.4s;
+}
+
+.internship-icon-box{
+  min-width:75px;
+  animation:floatIcon 3s infinite;
+}
+
+.internship-content{
+  flex:1;
+}
+
+.internship-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.internship-top h3{
+  font-size:34px;
+  color:var(--dark);
+}
+
+.internship-role{
+  margin-top:12px;
+
+  font-size:22px;
+
+  font-weight:bold;
+
+  color:var(--blue);
+}
+
+.internship-description{
+  margin-top:18px;
+
+  font-size:19px;
+
+  line-height:1.8;
+
+  color:var(--gray);
+}
+
+.internship-link{
+  margin-top:18px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  text-decoration:none;
+
+  color:var(--blue);
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  transition:0.3s;
+}
+
+.internship-link:hover{
+  transform:scale(1.05);
+  text-decoration:underline;
+}
+
+/* ================= PROJECTS ================= */
+
+.project-tech{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  margin-top:22px;
+
+  font-size:30px;
+
+  color:#7c3aed;
+}
+
+.project-tech svg{
+  transition:0.3s;
+}
+
+.project-tech svg:hover{
+  transform:scale(1.2);
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+  background:white;
+
+  padding:35px;
+
+  border-radius:25px;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+  display:flex;
+  flex-direction:column;
+
+  gap:25px;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:18px;
+
+  font-size:24px;
+  font-weight:600;
+
+  color:#1e293b;
+
+  transition:0.3s;
+}
+
+.contact-item:hover{
+  transform:translateX(8px);
+}
+
+.contact-icon{
+  font-size:32px;
+}
+
+.email-icon{color:#ef4444;}
+.phone-icon{color:#16a34a;}
+.linkedin-icon{color:#2563eb;}
+.github-icon{color:#111827;}
+.whatsapp-icon{color:#22c55e;}
+.telegram-icon{color:#38bdf8;}
+.insta-icon{color:#ec4899;}
+.location-icon{color:#f97316;}
+
+.contact-item a{
+  color:#2563eb;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.contact-item a:hover{
+  color:#7c3aed;
+  text-decoration:underline;
+}
+
+.map-container{
+  margin-top:35px;
+
+  border-radius:25px;
+
+  overflow:hidden;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media screen and (max-width:992px){
+
+  .skills-page{
+    grid-template-columns:1fr;
+  }
+
+  .skills-heading{
+    font-size:38px;
+  }
+
+  .skill-item{
+    font-size:24px;
+  }
+}
+
+@media screen and (max-width:768px){
+
+  .portfolio-header{
+    flex-direction:column;
+    gap:20px;
+    text-align:center;
+  }
+
+  .header-center h1{
+    font-size:38px;
+  }
+
+  .header-center p{
+    font-size:18px;
+  }
+
+  .profile-section img{
+    width:95px;
+    height:95px;
+  }
+
+  .portfolio-navbar{
+    gap:15px;
+  }
+
+  .portfolio-card{
+    padding:28px;
+  }
+
+  .portfolio-card h2,
+  .skills-heading,
+  .internship-heading{
+    font-size:34px;
+  }
+
+  .portfolio-card p,
+  .internship-description{
+    font-size:17px;
+  }
+
+  .edu-card,
+  .internship-box{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .internship-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .edu-left{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .edu-details h3,
+  .internship-top h3{
+    font-size:26px;
+  }
+
+  .college-name{
+    font-size:17px;
+  }
+
+  .cgpa-box{
+    width:100%;
+  }
+
+  .contact-item{
+    font-size:18px;
+  }
+
+  .contact-icon{
+    font-size:26px;
+  }
+
+  .project-tech{
+    font-size:24px;
+    gap:14px;
+  }
+}
+
+@media screen and (max-width:600px){
+
+  .skills-box{
+    padding:25px;
+  }
+
+  .skills-heading{
+    font-size:30px;
+  }
+
+  .skill-item{
+    font-size:20px;
+  }
+
+  .skill-icon,
+  .soft-icon{
+    font-size:28px;
+  }
+}

@@ -1,0 +1,491 @@
+/* studentDashboard.css */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+
+  background:#fff7ed;
+}
+
+/* MAIN */
+
+.student-dashboard{
+
+  min-height:100vh;
+
+  background:linear-gradient(
+    135deg,
+    #fff7ed,
+    #fde68a,
+    #fbcfe8
+  );
+}
+
+/* NAVBAR */
+
+.student-navbar{
+
+  height:90px;
+
+  background:linear-gradient(
+    to right,
+    #7c2d12,
+    #ea580c,
+    #be185d
+  );
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:0 30px;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* LEFT */
+
+.navbar-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+}
+
+/* LOGO */
+
+.logo-box{
+
+  width:58px;
+
+  height:58px;
+
+  border-radius:18px;
+
+  background:white;
+
+  color:#ea580c;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:28px;
+
+  font-weight:bold;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+  animation:floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-5px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+.navbar-left h2{
+
+  color:white;
+
+  font-size:24px;
+
+  font-weight:bold;
+}
+
+/* RIGHT */
+
+.navbar-right{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+/* PROFILE */
+
+.profile-img{
+
+  width:58px;
+
+  height:58px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:3px solid white;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
+
+.navbar-right span{
+
+  color:white;
+
+  font-size:22px;
+
+  font-weight:bold;
+}
+
+/* LOGOUT */
+
+.logout-btn{
+
+  background:white;
+
+  color:#be185d;
+
+  border:none;
+
+  padding:14px 24px;
+
+  border-radius:14px;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.logout-btn:hover{
+
+  transform:translateY(-3px);
+
+  background:#fff1f2;
+}
+
+/* MAIN */
+
+.student-main{
+
+  padding:35px;
+}
+
+/* TASK SECTION */
+
+.student-task-section{
+
+  background:rgba(255,255,255,0.92);
+
+  border-radius:30px;
+
+  padding:35px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+
+  animation:fadeUp 1s ease;
+}
+
+/* HEADER */
+
+.task-header{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:18px;
+}
+
+/* ICON */
+
+.task-icon{
+
+  width:65px;
+
+  height:65px;
+
+  border-radius:20px;
+
+  background:linear-gradient(
+    to right,
+    #ea580c,
+    #db2777
+  );
+
+  color:white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:30px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.task-header h1{
+
+  font-size:54px;
+
+  color:#7c2d12;
+}
+
+.task-header p{
+
+  color:#6b7280;
+
+  margin-top:5px;
+
+  font-size:20px;
+}
+
+/* TASK LIST */
+
+.task-list{
+
+  margin-top:40px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:25px;
+}
+
+/* CARD */
+
+.task-card{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  background:white;
+
+  padding:28px;
+
+  border-radius:24px;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+  transition:0.3s;
+}
+
+.task-card:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* LEFT */
+
+.task-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:20px;
+}
+
+/* STATUS */
+
+.status-circle{
+
+  width:50px;
+
+  height:50px;
+
+  border-radius:50%;
+
+  border:3px solid #f59e0b;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:22px;
+
+  color:#f59e0b;
+}
+
+.completed{
+
+  background:#22c55e;
+
+  border:none;
+
+  color:white;
+}
+
+/* TEXT */
+
+.task-card h3{
+
+  font-size:30px;
+
+  color:#7c2d12;
+}
+
+.completed-task{
+
+  text-decoration:line-through;
+
+  opacity:0.7;
+}
+
+.completed-text{
+
+  color:#16a34a;
+
+  margin-top:5px;
+
+  font-size:18px;
+
+  font-weight:bold;
+}
+
+.pending-text{
+
+  color:#ea580c;
+
+  margin-top:5px;
+
+  font-size:18px;
+
+  font-weight:bold;
+}
+
+/* BUTTONS */
+
+.complete-btn,
+.undo-btn{
+
+  padding:14px 24px;
+
+  border:none;
+
+  border-radius:14px;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.complete-btn{
+
+  background:#dcfce7;
+
+  color:#16a34a;
+}
+
+.undo-btn{
+
+  background:#fef3c7;
+
+  color:#d97706;
+}
+
+.complete-btn:hover,
+.undo-btn:hover{
+
+  transform:translateY(-3px);
+}
+
+/* NO TASK */
+
+.no-task{
+
+  text-align:center;
+
+  font-size:28px;
+
+  color:#6b7280;
+
+  margin-top:50px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width:768px){
+
+  .student-navbar{
+
+    flex-direction:column;
+
+    height:auto;
+
+    padding:20px;
+
+    gap:15px;
+  }
+
+  .student-main{
+
+    padding:20px;
+  }
+
+  .task-header h1{
+
+    font-size:38px;
+  }
+
+  .task-card{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+  }
+
+  .complete-btn,
+  .undo-btn{
+
+    width:100%;
+  }
+}
