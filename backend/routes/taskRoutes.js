@@ -7,245 +7,193 @@ const db = require("../db");
 
 /* ================= GET TASKS ================= */
 
-router.get("/:userId", (req, res) => {
+router.get("/:userId", async (req, res) => {
 
-  const userId = req.params.userId;
+  try {
 
-  db.query(
+    const userId = req.params.userId;
 
-    "SELECT * FROM tasks WHERE user_id=?",
+    const [result] = await db.query(
 
-    [userId],
+      "SELECT * FROM tasks WHERE user_id = ?",
 
-    (err, result) => {
+      [userId]
+    );
 
-      if (err) {
+    res.json(result);
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json(result);
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 
 /* ================= ADD TASK ================= */
 
-router.post("/add", (req, res) => {
+router.post("/add", async (req, res) => {
 
-  const { task, userId } = req.body;
+  try {
 
-  db.query(
+    const { task, userId } = req.body;
 
-    "INSERT INTO tasks(task, completed, user_id) VALUES(?,?,?)",
+    await db.query(
 
-    [task, 0, userId],
+      "INSERT INTO tasks(task, completed, user_id) VALUES(?,?,?)",
 
-    (err, result) => {
+      [task, 0, userId]
+    );
 
-      if (err) {
+    res.json({
+      message: "Task Added"
+    });
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json({
-
-          message: "Task Added"
-
-        });
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 
 /* ================= COMPLETE TASK ================= */
 
-router.put("/complete/:id", (req, res) => {
+router.put("/complete/:id", async (req, res) => {
 
-  const id = req.params.id;
+  try {
 
-  db.query(
+    const id = req.params.id;
 
-    "UPDATE tasks SET completed = 1 WHERE id=?",
+    await db.query(
 
-    [id],
+      "UPDATE tasks SET completed = 1 WHERE id = ?",
 
-    (err, result) => {
+      [id]
+    );
 
-      if (err) {
+    res.json({
+      message: "Task Completed"
+    });
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json({
-
-          message: "Task Completed"
-
-        });
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 
 /* ================= UNDO TASK ================= */
 
-router.put("/undo/:id", (req, res) => {
+router.put("/undo/:id", async (req, res) => {
 
-  const id = req.params.id;
+  try {
 
-  db.query(
+    const id = req.params.id;
 
-    "UPDATE tasks SET completed = 0 WHERE id=?",
+    await db.query(
 
-    [id],
+      "UPDATE tasks SET completed = 0 WHERE id = ?",
 
-    (err, result) => {
+      [id]
+    );
 
-      if (err) {
+    res.json({
+      message: "Task Undo Successful"
+    });
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json({
-
-          message: "Task Undo Successful"
-
-        });
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 
 /* ================= EDIT TASK ================= */
 
-router.put("/edit/:id", (req, res) => {
+router.put("/edit/:id", async (req, res) => {
 
-  const id = req.params.id;
+  try {
 
-  const { task } = req.body;
+    const id = req.params.id;
 
-  db.query(
+    const { task } = req.body;
 
-    "UPDATE tasks SET task=? WHERE id=?",
+    await db.query(
 
-    [task, id],
+      "UPDATE tasks SET task = ? WHERE id = ?",
 
-    (err, result) => {
+      [task, id]
+    );
 
-      if (err) {
+    res.json({
+      message: "Task Updated"
+    });
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json({
-
-          message: "Task Updated"
-
-        });
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 
 /* ================= DELETE TASK ================= */
 
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
 
-  const id = req.params.id;
+  try {
 
-  db.query(
+    const id = req.params.id;
 
-    "DELETE FROM tasks WHERE id=?",
+    await db.query(
 
-    [id],
+      "DELETE FROM tasks WHERE id = ?",
 
-    (err, result) => {
+      [id]
+    );
 
-      if (err) {
+    res.json({
+      message: "Task Deleted"
+    });
 
-        console.log(err);
+  }
 
-        res.status(500).json(err);
+  catch (error) {
 
-      } else {
+    console.log(error);
 
-        res.json({
-
-          message: "Task Deleted"
-
-        });
-
-      }
-
-    }
-  );
-
-});
-
-/* UNDO TASK */
-
-router.put("/undo/:id", (req, res) => {
-
-  const id = req.params.id;
-
-  db.query(
-    "UPDATE tasks SET completed=false WHERE id=?",
-    [id],
-    (err, result) => {
-
-      if (err) {
-
-        console.log(err);
-
-        res.status(500).json(err);
-
-      } else {
-
-        res.json({
-          message:"Task Undo"
-        });
-
-      }
-
-    }
-  );
-
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
 });
 
 module.exports = router;
