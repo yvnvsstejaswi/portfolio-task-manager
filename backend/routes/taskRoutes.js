@@ -13,14 +13,14 @@ router.get("/:userId", async (req, res) => {
 
     const userId = req.params.userId;
 
-    const [result] = await db.query(
+    const [tasks] = await db.query(
 
-      "SELECT * FROM tasks WHERE user_id = ?",
+      "SELECT * FROM tasks WHERE user_id = ? ORDER BY id DESC",
 
       [userId]
     );
 
-    res.json(result);
+    res.status(200).json(tasks);
 
   }
 
@@ -29,7 +29,7 @@ router.get("/:userId", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to fetch tasks"
     });
   }
 });
@@ -43,6 +43,13 @@ router.post("/add", async (req, res) => {
 
     const { task, userId } = req.body;
 
+    if (!task || !userId) {
+
+      return res.status(400).json({
+        message: "Task and User ID required"
+      });
+    }
+
     await db.query(
 
       "INSERT INTO tasks(task, completed, user_id) VALUES(?,?,?)",
@@ -50,8 +57,8 @@ router.post("/add", async (req, res) => {
       [task, 0, userId]
     );
 
-    res.json({
-      message: "Task Added"
+    res.status(200).json({
+      message: "Task Added Successfully"
     });
 
   }
@@ -61,7 +68,7 @@ router.post("/add", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to add task"
     });
   }
 });
@@ -77,13 +84,13 @@ router.put("/complete/:id", async (req, res) => {
 
     await db.query(
 
-      "UPDATE tasks SET completed = 1 WHERE id = ?",
+      "UPDATE tasks SET completed = ? WHERE id = ?",
 
-      [id]
+      [1, id]
     );
 
-    res.json({
-      message: "Task Completed"
+    res.status(200).json({
+      message: "Task Marked Completed"
     });
 
   }
@@ -93,7 +100,7 @@ router.put("/complete/:id", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to complete task"
     });
   }
 });
@@ -109,12 +116,12 @@ router.put("/undo/:id", async (req, res) => {
 
     await db.query(
 
-      "UPDATE tasks SET completed = 0 WHERE id = ?",
+      "UPDATE tasks SET completed = ? WHERE id = ?",
 
-      [id]
+      [0, id]
     );
 
-    res.json({
+    res.status(200).json({
       message: "Task Undo Successful"
     });
 
@@ -125,7 +132,7 @@ router.put("/undo/:id", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to undo task"
     });
   }
 });
@@ -148,8 +155,8 @@ router.put("/edit/:id", async (req, res) => {
       [task, id]
     );
 
-    res.json({
-      message: "Task Updated"
+    res.status(200).json({
+      message: "Task Updated Successfully"
     });
 
   }
@@ -159,7 +166,7 @@ router.put("/edit/:id", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to update task"
     });
   }
 });
@@ -180,8 +187,8 @@ router.delete("/delete/:id", async (req, res) => {
       [id]
     );
 
-    res.json({
-      message: "Task Deleted"
+    res.status(200).json({
+      message: "Task Deleted Successfully"
     });
 
   }
@@ -191,9 +198,10 @@ router.delete("/delete/:id", async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      message: "Server Error"
+      message: "Failed to delete task"
     });
   }
 });
+
 
 module.exports = router;
