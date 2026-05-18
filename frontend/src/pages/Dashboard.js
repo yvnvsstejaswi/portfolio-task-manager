@@ -163,7 +163,7 @@ function Dashboard() {
     try {
 
       await axios.put(
-        `https://taskmanager-backend-f36i.onrender.com/tasks/complete/${id}`
+        `https://taskmanager-backend-f36i.onrender.com/api/tasks/complete/${id}`
       );
 
       fetchTasks(selectedUser.id);
