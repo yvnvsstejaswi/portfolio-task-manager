@@ -152,12 +152,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-const express = require("express");
-const router = express.Router();
-const bcrypt = require("bcrypt");
-const db = require("../db");
-
-
 // ================= REGISTER =================
 
 router.post("/register", async (req, res) => {
