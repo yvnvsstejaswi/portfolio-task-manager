@@ -1,38 +1,6 @@
 const express = require("express");
-
 const router = express.Router();
-
 const db = require("../db");
-
-
-/* ================= GET TASKS ================= */
-
-router.get("/:userId", async (req, res) => {
-
-  try {
-
-    const userId = req.params.userId;
-
-    const [tasks] = await db.query(
-
-      "SELECT * FROM tasks WHERE user_id = ? ORDER BY id DESC",
-
-      [userId]
-    );
-
-    res.status(200).json(tasks);
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-    res.status(500).json({
-      message: "Failed to fetch tasks"
-    });
-  }
-});
 
 
 /* ================= ADD TASK ================= */
@@ -199,6 +167,36 @@ router.delete("/delete/:id", async (req, res) => {
 
     res.status(500).json({
       message: "Failed to delete task"
+    });
+  }
+});
+
+
+/* ================= GET TASKS ================= */
+
+router.get("/:userId", async (req, res) => {
+
+  try {
+
+    const userId = req.params.userId;
+
+    const [tasks] = await db.query(
+
+      "SELECT * FROM tasks WHERE user_id = ? ORDER BY id DESC",
+
+      [userId]
+    );
+
+    res.status(200).json(tasks);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Failed to fetch tasks"
     });
   }
 });
